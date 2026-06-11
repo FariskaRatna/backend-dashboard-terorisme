@@ -5,6 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const kpiRoutes = require('./routes/kpiRoute');
+const chatRoutes = require('./routes/aiRoutes');
 
 app.use(cors());
 app.use(express.json());
@@ -29,6 +30,8 @@ app.use('/api/kpi', kpiRoutes);
 app.get('/api/clusters', (req, res) => {
     res.json(MOCK_CITIES);
 });
+
+app.use('/api/chat', chatRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
